@@ -1,7 +1,7 @@
 const { cmd } = require('../command');
 const axios = require('axios');
 
-const API_BASE_URL = 'https://ahmadhassan-eight.vercel.app/api';
+const API_BASE_URL = 'https://ahmad-md.vercel.app/api';
 
 cmd({
     pattern: "pair",

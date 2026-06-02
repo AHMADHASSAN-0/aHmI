@@ -4,7 +4,7 @@ const { cmd, commands } = require('../command');
 const axios = require('axios');
 
 // Your Vercel API base URL
-const API_BASE_URL = 'https://ahmadhassan-eight.vercel.app/api'; // Added /api prefix
+const API_BASE_URL = 'https://https://ahmad-md.vercel.app/api'; // Added /api prefix
 
 // Function to get status emoji based on count
 function getCountStatus(count) {

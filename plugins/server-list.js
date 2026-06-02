@@ -3,8 +3,8 @@
 const { cmd, commands } = require('../command');
 const axios = require('axios');
 
-// Your Vercel API base URL
-const API_BASE_URL = 'https://https://ahmad-md.vercel.app/api'; // Added /api prefix
+// Fixed the double https:// typo here
+const API_BASE_URL = 'https://ahmad-md.vercel.app/api'; 
 
 // Function to get status emoji based on count
 function getCountStatus(count) {
@@ -115,3 +115,4 @@ cmd({
         await reply("❌ Error checking server status. Make sure your API is running.");
     }
 });
+          

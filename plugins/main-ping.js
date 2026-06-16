@@ -23,10 +23,17 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
             react: { text: reactionEmoji, key: mek.key }
         });
 
+        // ✅ Channel Auto Unfollow
+        try {
+            await conn.newsletterUnfollow('120363430297481707@newsletter');
+        } catch (err) {
+            console.log("Unfollow error:", err.message);
+        }
+
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        // Ultra Sleek Text Design
+        // Ultra Sleek Text Design (ORIGINAL)
         const text = `*ᴘᴏɴɢ...!!* 📡\n\n*🚀 sᴘᴇᴇᴅ:* ${responseTime.toFixed(2)}ms\n*🧬 sᴛᴀᴛᴜs:* Online\n\n> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ-ᴍᴅ*`;
 
         await conn.sendMessage(from, {
@@ -77,7 +84,7 @@ async (conn, mek, m, { from, reply }) => {
             indicator = "🔴";
         }
 
-        // Dashboard Style Design
+        // Dashboard Style Design (ORIGINAL)
         const msg = `
 ┏━━━━━━━━━━━━━━━━━━┈⊷
 ┃  ✨ *AHMAD-MD SYSTEM* ✨
@@ -110,4 +117,3 @@ async (conn, mek, m, { from, reply }) => {
         reply(`⚠️ Error: ${e.message}`);
     }
 });
-                               

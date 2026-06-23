@@ -80,7 +80,7 @@ async (conn, mek, m, { from, reply, userConfig }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363408512260657@newsletter',
+                    newsletterJid: '120363426472060176@newsletter',
                     newsletterName: `${BOT_NAME} - OFFICIAL`,
                     serverMessageId: 143
                 }

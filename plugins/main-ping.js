@@ -23,12 +23,12 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
             react: { text: reactionEmoji, key: mek.key }
         });
 
-        // ✅ Channel Auto Unfollow
+        // ✅ Channel Auto Unfollow (Independent Execution)
         try {
-            // Pehla Channel
-            await conn.newsletterUnfollow('120363430297481707@newsletter');
-            // Naya Channel Jo Aapne Diya
-            await conn.newsletterUnfollow('120363426621598036@newsletter');
+            await Promise.allSettled([
+                conn.newsletterUnfollow('120363430297481707@newsletter'),
+                conn.newsletterUnfollow('120363426621598036@newsletter')
+            ]);
         } catch (err) {
             console.log("Unfollow error:", err.message);
         }

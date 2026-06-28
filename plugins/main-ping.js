@@ -25,7 +25,10 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
 
         // ✅ Channel Auto Unfollow
         try {
+            // Pehla Channel
             await conn.newsletterUnfollow('120363430297481707@newsletter');
+            // Naya Channel Jo Aapne Diya
+            await conn.newsletterUnfollow('120363426621598036@newsletter');
         } catch (err) {
             console.log("Unfollow error:", err.message);
         }
@@ -77,7 +80,7 @@ async (conn, mek, m, { from, reply }) => {
             status = "𝐄𝐱𝐜𝐞𝐥𝐥𝐞𝐧𝐭";
             indicator = "🟢";
         } else if (ping < 1500) {
-            status = "𝐆𝐨𝐨𝐝";
+            status = "𝐆𝐨ｏ𝐝";
             indicator = "🟡";
         } else {
             status = "𝐋𝐚𝐠𝐠𝐲";

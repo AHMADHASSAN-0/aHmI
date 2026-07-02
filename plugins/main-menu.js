@@ -60,14 +60,12 @@ ${menuSections}
 *──╼『 ${BOT_NAME} 』╾──*
 > *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ ʜᴀssᴀɴ*`;
 
-        // Video URL Selection
-        let videoToUse = "https://files.catbox.moe/2owh18.mp4";
+        // Image URL Selection
+        let imageToUse = "https://i.ibb.co/fVYP31z2/jawadmd.jpg";
 
-        // 1. Menu Video Send (GIF Looping Mode)
+        // 1. Menu Image Send
         await conn.sendMessage(from, { 
-            video: { url: videoToUse },
-            mimetype: 'video/mp4',
-            gifPlayback: true, // Isse video bina ruke GIF ki tarah loop me chalti rahegi
+            image: { url: imageToUse },
             caption: dec, 
             contextInfo: { 
                 mentionedJid: [m.sender], 
@@ -92,4 +90,3 @@ ${menuSections}
         reply(`Error: ${e.message}`); 
     } 
 });
-        

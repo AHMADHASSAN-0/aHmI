@@ -6,7 +6,6 @@ const fs = require('fs');
 const {runtime} = require('../lib/functions')
 const axios = require('axios')
 
-// Helper function for small caps text
 const toSmallCaps = (text) => {
     if (!text || typeof text !== 'string') return '';
     const smallCapsMap = {
@@ -17,21 +16,22 @@ const toSmallCaps = (text) => {
     return text.toLowerCase().split('').map(char => smallCapsMap[char] || char).join('');
 };
 
-// --- ROYAL LUXURY CATEGORY STYLE ---
+// --- BUG / CRASH METHOD STYLE ---
 const formatCategory = (category, cmds) => {
     const validCmds = cmds.filter(cmd => cmd.pattern && cmd.pattern.trim() !== '');
     if (validCmds.length === 0) return ''; 
     
-    let title = `\n*◈═══〔 ${category.toUpperCase()} 〕═══◈*\n`;
-    let body = validCmds.map(cmd => `*⚡︎* ${toSmallCaps(cmd.pattern)}`).join('\n');
-    return `${title}${body}\n`;
+    let title = `\n*☠️ ───⪼ ⟦ ${category.toUpperCase()} ⟧ ⪻─── ☠️*\n`;
+    let body = validCmds.map(cmd => `*☣️ 🔓* .${toSmallCaps(cmd.pattern)}`).join('\n');
+    let footer = `\n*⚠️ ───────────────────────*\n`;
+    return `${title}${body}${footer}`;
 };
 
 cmd({
     pattern: "menu",
-    alias: ["m", "help", "allmenu"],
+    alias: ["m", "help", "allmenu", "bugmenu"],
     category: "main",
-    react: "⚡",
+    react: "☣️",
     filename: __filename
 },
 async (conn, mek, m, { from, pushname, reply }) => {
@@ -46,24 +46,27 @@ async (conn, mek, m, { from, pushname, reply }) => {
         const BOT_NAME = config.BOT_NAME || "AHMAD-MD";
         const uptime = runtime(process.uptime());
 
-        // --- ROYAL INTERFACE DESIGN ---
+        // --- GLITCH / HACKER INTERFACE DESIGN ---
         let dec = `
-*✨ ${BOT_NAME.toUpperCase()} ✨*
+*⚡️ 🩸 ${BOT_NAME.toUpperCase()} CRASH SYSTEM 🩸 ⚡️*
 
-*╭══════════════════⊷*
-*│ 👤 OWNER:* ${config.OWNER_NAME || "Ahmad Hassan"}
-*│ 🚀 UPTIME:* ${uptime}
-*│ 📂 COMMANDS:* ${Object.keys(commands).length}
-*│ 🛠️ MODE:* ${config.MODE || "Public"}
-*╰══════════════════⊷*
+*⚠️ WARNING: USE WITH CAUTION ⚠️*
+
+*┏────────────────────────┓*
+*┃ 👤 EXPLOITER:* ${pushname || "Target"}
+*┃ 💀 CODENAME:* ${config.OWNER_NAME || "Ahmad Hassan"}
+*┃ ⏳ ONLINE:* ${uptime}
+*┃ 🗂️ EXPLOITS:* ${Object.keys(commands).length} Loaded
+*┃ ⚙️ ENGINE:* ${config.MODE || "Public"}
+*┗────────────────────────┛*
+
 ${menuSections}
-*──╼『 ${BOT_NAME} 』╾──*
+*☠️ SYSTEM CORRUPTED ☠️*
 > *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ ʜᴀssᴀɴ*`;
 
-        // Image URL Selection
-        let imageToUse = "https://i.ibb.co/fVYP31z2/jawadmd.jpg";
+        // Nayi Catbox PNG image URL yahan add kar di hai
+        let imageToUse = "https://files.catbox.moe/mo66ob.png";
 
-        // 1. Menu Image Send
         await conn.sendMessage(from, { 
             image: { url: imageToUse },
             caption: dec, 
@@ -79,11 +82,10 @@ ${menuSections}
             } 
         }, { quoted: mek });
 
-        // 2. Audio File Send (As Audio, not Voice Note)
         await conn.sendMessage(from, {
             audio: { url: "https://files.catbox.moe/hoi9ur.mp3" },
             mimetype: 'audio/mpeg',
-            ptt: false // Normal audio file tarah show hoga
+            ptt: false
         }, { quoted: mek });
 
     } catch (e) { 

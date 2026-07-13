@@ -16,7 +16,7 @@ const toSmallCaps = (text) => {
     return text.toLowerCase().split('').map(char => smallCapsMap[char] || char).join('');
 };
 
-// --- BUG / CRASH METHOD STYLE ---
+// --- NORMAL CATEGORY STYLE ---
 const formatCategory = (category, cmds) => {
     const validCmds = cmds.filter(cmd => cmd.pattern && cmd.pattern.trim() !== '');
     if (validCmds.length === 0) return ''; 
@@ -37,11 +37,25 @@ cmd({
 async (conn, mek, m, { from, pushname, reply }) => {
     try {
         const categories = [...new Set(Object.values(commands).map(c => c.category))].filter(Boolean);
-        let menuSections = '';
+        
+        let bugSections = '';
+        let normalSections = '';
+
+        // Bug category ko sabse pehle aur alag show karne ke liye logic
         categories.forEach(cat => {
             const catCmds = Object.values(commands).filter(c => c.category === cat);
-            menuSections += formatCategory(cat, catCmds);
+            
+            if (cat.toLowerCase() === 'bug' || cat.toLowerCase() === 'crash') {
+                bugSections += `\n*⚡️ 🔥 ━━━〔 🔥 VIP BUG MENU 🔥 〕━━━ 🔥 ⚡️*\n`;
+                bugSections += catCmds.map(cmd => `*⚡☠️* .${toSmallCaps(cmd.pattern)}`).join('\n');
+                bugSections += `\n*🛑 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 🛑*\n`;
+            } else {
+                normalSections += formatCategory(cat, catCmds);
+            }
         });
+
+        // Dono ko combine karna (Bug commands hamesha shuru mein aayengi)
+        let menuSections = bugSections + normalSections;
 
         const BOT_NAME = config.BOT_NAME || "AHMAD-MD";
         const uptime = runtime(process.uptime());
@@ -64,7 +78,7 @@ ${menuSections}
 *☠️ SYSTEM CORRUPTED ☠️*
 > *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ ʜᴀssᴀɴ*`;
 
-        // Nayi Catbox PNG image URL yahan add kar di hai
+        // Catbox PNG Image URL
         let imageToUse = "https://files.catbox.moe/mo66ob.png";
 
         await conn.sendMessage(from, { 

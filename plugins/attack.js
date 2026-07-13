@@ -3,7 +3,7 @@ const { cmd } = require('../command');
 cmd({
     pattern: "attack",
     // Yahan alias mein "inject" aur "exploit" add kar diya hai taake log ise bhi padh sakein
-    alias: ["zylex", "forcekill", "inject", "exploit", "payload"],
+    alias: ["ahmadbug", "forcekill", "inject", "exploit", "payload"],
     category: "bug", // Category 'bug' hai, isliye yeh menu mein automatic top par jayegi
     desc: "Simulates an un-stoppable visual terminal attack feed for pranks.",
     use: "<number>",

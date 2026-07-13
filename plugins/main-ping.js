@@ -1,43 +1,33 @@
-const config = require('../config');
+,const config = require('../config');
 const { cmd, commands } = require('../command');
 
-// --- PING COMMAND (MODERN UI) ---
+// --- PING COMMAND (BUG SYSTEM STYLE) ---
 cmd({
     pattern: "ping",
     alias: ["speed","pong"],
     use: '.ping',
-    desc: "Check bot's response time.",
+    desc: "Check system exploit response latency.",
     category: "main",
-    react: "⚡",
+    react: "☣️",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, sender, reply }) => {
     try {
         const start = new Date().getTime();
 
-        const reactionEmojis = ['⚡', '🚀', '🎯', '✨', '💎'];
+        const reactionEmojis = ['☣️', '☠️', '🩸', '⚡', '⚠️'];
         const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
 
-        // Quick reaction
+        // Quick hacker reaction
         await conn.sendMessage(from, {
             react: { text: reactionEmoji, key: mek.key }
         });
 
-        // ✅ Channel Auto Unfollow (Independent Execution)
-        try {
-            await Promise.allSettled([
-                conn.newsletterUnfollow('120363430297481707@newsletter'),
-                conn.newsletterUnfollow('120363426621598036@newsletter')
-            ]);
-        } catch (err) {
-            console.log("Unfollow error:", err.message);
-        }
-
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        // Ultra Sleek Text Design (ORIGINAL)
-        const text = `*ᴘᴏɴɢ...!!* 📡\n\n*🚀 sᴘᴇᴇᴅ:* ${responseTime.toFixed(2)}ms\n*🧬 sᴛᴀᴛᴜs:* Online\n\n> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ-ᴍᴅ*`;
+        // Hacker Terminal Style Text
+        const text = `*☠️ PONG...!! SYSTEM RESPONDING* 📡\n\n*🩸 LATENCY:* ${responseTime.toFixed(2)}ms\n*☣️ INJECTION:* Active\n\n> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀʜᴍᴀᴅ-ᴍᴅ*`;
 
         await conn.sendMessage(from, {
             text,
@@ -47,7 +37,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363426472060176@newsletter',
-                    newsletterName: "AHMAD-MD TECH",
+                    newsletterName: "AHMADTech",
                     serverMessageId: 143
                 }
             }
@@ -59,12 +49,12 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
     }
 });
 
-// --- PING2 COMMAND (DASHBOARD UI) ---
+// --- PING2 COMMAND (CRASH TERMINAL UI) ---
 cmd({
     pattern: "ping2",
-    desc: "Check bot's response time with dashboard view.",
+    desc: "Check exploit dashboard speed status.",
     category: "main",
-    react: "🚀",
+    react: "🩸",
     filename: __filename
 },
 async (conn, mek, m, { from, reply }) => {
@@ -78,27 +68,25 @@ async (conn, mek, m, { from, reply }) => {
         let indicator;
         if (ping < 1000) {
             status = "𝐄𝐱𝐜𝐞𝐥𝐥𝐞𝐧𝐭";
-            indicator = "🟢";
+            indicator = "☣️";
         } else if (ping < 1500) {
             status = "𝐆𝐨ｏ𝐝";
-            indicator = "🟡";
+            indicator = "⚠️";
         } else {
             status = "𝐋𝐚𝐠𝐠𝐲";
-            indicator = "🔴";
+            indicator = "☠️";
         }
 
-        // Dashboard Style Design (ORIGINAL)
+        // Bug Bot Dashboard Design
         const msg = `
-┏━━━━━━━━━━━━━━━━━━┈⊷
-┃  ✨ *AHMAD-MD SYSTEM* ✨
-┗━━━━━━━━━━━━━━━━━━┈⊷
-┃
-┃ 📡 *Latency:* ${ping} ms
-┃ 🧠 *Quality:* ${status} ${indicator}
-┃ ⚡ *Performance:* Stable
-┃ 🛰️ *Server:* Global-High
-┃
-┗━━━━━━━━━━━━━━━━━━┈⊷
+*⚡️ 🩸 AHMAD-MD TERMINAL STATUS 🩸 ⚡️*
+
+*┏────────────────────────┓*
+*┃ 📡 EXPLOIT SPEED:* ${ping} ms
+*┃ 🧠 PACKET STATUS:* ${status} ${indicator}
+*┃ ⚡ ENGINE MODE:* Stable
+*┃ 🛰️ DATABASE:* Corrupt-Online
+*┗────────────────────────┛*
 
 > *Created by Ahmad Hassan*`;
 
@@ -109,7 +97,7 @@ async (conn, mek, m, { from, reply }) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363426472060176@newsletter',
-                    newsletterName: "AHMAD-MD TECH",
+                    newsletterName: "AHMADTech",
                     serverMessageId: 143
                 }
             }
@@ -120,3 +108,4 @@ async (conn, mek, m, { from, reply }) => {
         reply(`⚠️ Error: ${e.message}`);
     }
 });
+            
